@@ -115,3 +115,26 @@ interface fastethernet 2/0
 bandwidth 576
 end
 exit
+
+
+
+
+PARTE SCRITTA DA MAZZULLO 
+
+!RT-MI-EXT
+Enable
+Configure Terminal
+!- Abilita il processo OSPF e gli assegna un ID
+!- L'ID è un numero arbitrario (da 1 a 65535)
+!- che identifica il processo OSPF in esecuzione sul router
+router ospf 120
+!- network <network-address> <wildcard-mask> area <area-id>:
+!- Questo è il comando cruciale che definisce
+!- quali interfacce del router parteciperanno al processo OSPF e in quale area OSPF
+network 11.0.0.0 0.0.0.63 area 0
+exit
+!- Singolo costo per interfaccia
+!- Fa 9/0 MI->PA costo 2
+interface fastethernet 9/0
+ip ospf cost 2
+no shutdown
