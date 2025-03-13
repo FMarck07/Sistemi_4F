@@ -1,0 +1,117 @@
+!RT-1
+enable 
+configure terminal 
+hostname RT-1
+router rip
+version 2
+network 10.0.0.0
+exit
+!- Fast Ethernet 0/0 RT-1 -> RT-2
+interface fastethernet 0/0
+bandwidth 501
+no shutdown
+!- Fast Ethernet 1/0 RT-1 -> RT-3
+interface fastethernet 1/0
+bandwidth 725
+no shutdown
+end
+exit
+
+!RT-2
+enable 
+configure terminal 
+hostname RT-2
+router rip
+version 2
+network 10.0.0.0
+exit
+!- Fast Ethernet 0/0 RT-2 -> RT-1
+interface fastethernet 0/0
+bandwidth 501
+no shutdown
+!- Fast Ethernet 1/0 RT-2 -> RT-3
+interface fastethernet 1/0
+bandwidth 651
+no shutdown
+!- Fast Ethernet 2/0 RT-2 -> RT-4
+interface fastethernet 2/0
+bandwidth 800
+no shutdown
+!- Fast Ethernet 3/0 RT-2 -> RT-5
+interface fastethernet 3/0
+bandwidth 128
+no shutdown
+end
+exit
+
+!RT-3
+enable 
+configure terminal 
+hostname RT-3
+router rip
+version 2
+network 10.0.0.0
+exit
+!- Fast Ethernet 0/0 RT-3 -> RT-1
+interface fastethernet 0/0
+bandwidth 725
+no shutdown
+!- Fast Ethernet 1/0 RT-3 -> RT-2
+interface fastethernet 1/0
+bandwidth 651
+no shutdown
+!- Fast Ethernet 3/0 RT-3 -> RT-4
+interface fastethernet 3/0
+bandwidth 1024
+no shutdown
+!- Fast Ethernet 2/0 RT-3 -> RT-5
+interface fastethernet 2/0
+bandwidth 277
+no shutdown
+end
+exit
+
+!RT-4
+enable 
+configure terminal 
+hostname RT-4
+router rip
+version 2
+network 10.0.0.0
+exit
+!- Fast Ethernet 0/0 RT-4 -> RT-2
+interface fastethernet 0/0
+bandwidth 800
+no shutdown
+!- Fast Ethernet 1/0 RT-4 -> RT-3
+interface fastethernet 1/0
+bandwidth 1024
+no shutdown
+!- Fast Ethernet 2/0 RT-4 -> RT-5
+interface fastethernet 2/0
+bandwidth 576
+no shutdown
+end
+exit
+
+!RT-5
+enable 
+configure terminal 
+hostname RT-5
+router rip
+version 2
+network 10.0.0.0
+exit
+!- Fast Ethernet 0/0 RT-5 -> RT-2
+interface fastethernet 0/0
+bandwidth 1024
+no shutdown
+!- Fast Ethernet 1/0 RT-5 -> RT-3
+interface fastethernet 1/0
+bandwidth 277
+no shutdown
+!- Fast Ethernet 2/0 RT-5 -> RT-4
+interface fastethernet 2/0
+bandwidth 576
+end
+exit
